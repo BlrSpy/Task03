@@ -8,7 +8,6 @@ import by.epam.dao.ReadFileDAO;
 import by.epam.service.Parser;
 import by.epam.service.ServiceException;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Stack;
@@ -16,7 +15,7 @@ import java.util.Stack;
 public class ParserImpl implements Parser {
 
     @Override
-    public Node getParseXML(File file) throws ServiceException {
+    public Node getParseXML() throws ServiceException {
 
         DAOProvider provider = DAOProvider.getInstance();
         ReadFileDAO readFileDAO = provider.getReadFileDAO();
@@ -49,7 +48,9 @@ public class ParserImpl implements Parser {
                 while (!element.contains(">")) {
 
                     Attribute attribute = new Attribute();
-                    attribute.setAttr(element);
+                    int attr = Integer.parseInt(element.split("=")[1].replaceAll("\"", ""));
+                    attribute.setName(element.split("=",2)[0]);
+                    attribute.setAttr(attr);
                     node.addAttribute(attribute);
                     element = iter.next();
                 }
@@ -59,7 +60,7 @@ public class ParserImpl implements Parser {
                 if (!element.equals(">")) {
                     while (!element.contains("<")) {
 
-                        node.setContent(content.concat(element.replaceAll(">", "")));
+                        node.setContent(content.concat(element.replaceAll(">", "") + " "));
                         element = iter.next();
                         content = node.getContent();
 
@@ -85,7 +86,9 @@ public class ParserImpl implements Parser {
                     while (!element.contains(">")) {
 
                         Attribute attribute = new Attribute();
-                        attribute.setAttr(element);
+                        int attr = Integer.parseInt(element.split("=")[1].replaceAll("\"", ""));
+                        attribute.setName(element.split("=",2)[0]);
+                        attribute.setAttr(attr);
 
                         node.addAttribute(attribute);
                         element = iter.next();
@@ -100,7 +103,7 @@ public class ParserImpl implements Parser {
 
                     while (!element.contains("<")) {
 
-                        node.setContent(content.concat(element.replaceAll(">", "")));
+                        node.setContent(content.concat(element.replaceAll(">", "") + " "));
                         element = iter.next();
                         content = node.getContent();
 

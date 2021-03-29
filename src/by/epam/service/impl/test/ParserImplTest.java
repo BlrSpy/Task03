@@ -50,7 +50,11 @@ class ParserImplTest {
 
                     System.out.println("2 - " + element);
                     Attribute attribute = new Attribute();
-                    attribute.setAttr(element);
+                    int attr = Integer.parseInt(element.split("=")[1].replaceAll("\"", ""));
+                    attribute.setName(element.split("=",2)[0]);
+                    attribute.setAttr(attr);
+                    System.out.println("attr = " + attr);
+                    System.out.println("attr name= " + attribute.getName());
                     node.addAttribute(attribute);
                     element = iter.next();
                 }
@@ -90,7 +94,11 @@ class ParserImplTest {
 
                         System.out.println("5 - " + element);
                         Attribute attribute = new Attribute();
-                        attribute.setAttr(element);
+                        int attr = Integer.parseInt(element.split("=")[1].replaceAll("\"", ""));
+                        attribute.setName(element.split("=",2)[0]);
+                        attribute.setAttr(attr);
+                        System.out.println("attr = " + attr);
+                        System.out.println("attr name= " + attribute.getName());
 
                         node.addAttribute(attribute);
                         element = iter.next();

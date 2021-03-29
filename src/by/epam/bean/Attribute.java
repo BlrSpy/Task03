@@ -1,11 +1,46 @@
 package by.epam.bean;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.Objects;
 
-public class Attribute {
-    private String attr;
+public class Attribute implements Serializable {
+    private String name;
+    private int attr;
 
+    public Attribute() {
+        name = "";
+        attr = -1;
+    }
 
-    public void setAttr (String attr) { this.attr = attr; }
-    public String getAttr () { return attr; }
+    public Attribute(String name, int attr) {
+        this.name = name;
+        this.attr = attr;
+    }
+
+    public void setAttr (int attr) { this.attr = attr; }
+    public int getAttr () { return attr; }
+
+    public void setName (String name) { this.name = name; }
+    public String getName () { return name; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Attribute attribute = (Attribute) o;
+        return attr == attribute.attr && Objects.equals(name, attribute.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, attr);
+    }
+
+    @Override
+    public String toString() {
+        return "Attribute{" +
+                "name='" + name + '\'' +
+                ", attr=" + attr +
+                '}';
+    }
 }

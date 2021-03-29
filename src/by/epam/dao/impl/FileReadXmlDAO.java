@@ -13,11 +13,12 @@ public class FileReadXmlDAO implements ReadFileDAO {
     @Override
     public ArrayList<String> readFile() throws DAOException {
 
+        Scanner sc = null;
         try {
 
             File file = new File("food.xml");
             ArrayList<String> list = new ArrayList<>();
-            Scanner sc = new Scanner(file);
+            sc = new Scanner(file);
             String info = "";
 
             if (sc.hasNext()) {
@@ -38,12 +39,13 @@ public class FileReadXmlDAO implements ReadFileDAO {
                 list.addAll(Arrays.asList(subStr));
             }
 
-            sc.close();
-
             return list;
 
         } catch (IOException e) {
             throw new DAOException(e);
+        }
+        finally {
+            if (sc != null) sc.close();
         }
     }
 }

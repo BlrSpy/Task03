@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+	
+	<student id="1">
+		<name>name</name>
+		<telephone>0</telephone>
+		<address>
+			<country>country</country>
+			<city>city</city>
+			<street>street</street>
+		</address>
+	</student>
+	<student id="2">
+		<name>name</name>
+		<telephone>0</telephone>
+		<address>
+			<country>country</country>
+			<city>city</city>
+			<street>street</street>
+		</address>
+	</student>
+	
+</students>
