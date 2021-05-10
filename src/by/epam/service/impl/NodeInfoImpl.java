@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class NodeInfoImpl implements NodeInfo {
     @Override
-    public ArrayList<String> getNodeInfo(Node node){
+    public void getNodeInfo(Node node){
 
         ArrayList<String> list = new ArrayList<>();
 
@@ -21,7 +21,9 @@ public class NodeInfoImpl implements NodeInfo {
                 list.add(n.getContent());
             }
         }
-    return list;
+        for (String s: list) {
+            System.out.println(s);
+        }
     }
 }
 

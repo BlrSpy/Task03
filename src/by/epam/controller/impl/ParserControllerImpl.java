@@ -7,8 +7,6 @@ import by.epam.service.Parser;
 import by.epam.service.ServiceException;
 import by.epam.service.ServiceProvider;
 
-import java.util.ArrayList;
-
 
 public class ParserControllerImpl implements ParserController {
 
@@ -22,13 +20,7 @@ public class ParserControllerImpl implements ParserController {
 
         try {
             Node node = parser.getParseXML();
-            
-            ArrayList<String> list;
-            list = nodeInfo.getNodeInfo(node);
-
-            for (String s: list) {
-                System.out.println(s);
-            }
+            nodeInfo.getNodeInfo(node);
 
             response = "Job is done!";
         } catch (ServiceException e) {
